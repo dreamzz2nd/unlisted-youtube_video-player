@@ -1,6 +1,6 @@
 /**
- * E-Learning Protected Video Player System
- * Core Logic: Plyr.js Masking, Click Interceptor, Dynamic Floating Watermark & Anti-Inspect
+ * EduSecure - Protected Video Player System
+ * Core Logic: Plyr.js Masking, Click Interceptor, Dynamic Monospace Watermark & Anti-Inspect Guard
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 let playerInstance = null;
 
 /**
- * 1. Inisialisasi Plyr Player dengan Masking Penuh
+ * 1. Inisialisasi Plyr Player dengan Masking & Tema Bersih
  */
 function initProtectedPlayer() {
     const playerElement = document.getElementById('player');
@@ -46,7 +46,7 @@ function initProtectedPlayer() {
         }
     });
 
-    // Pasang Click Interceptor pada Shield Overlay
+    // Pasang Click Interceptor pada Shield Overlay (Play/Pause dan Fullscreen toggle)
     const shield = document.getElementById('playerShield');
     if (shield) {
         shield.addEventListener('click', (e) => {
@@ -67,21 +67,16 @@ function initProtectedPlayer() {
     }
 
     playerInstance.on('ready', () => {
-        console.log('🛡️ Protected Player Ready: Masked YouTube player initialized.');
+        console.log('🛡️ Protected Player Ready: YouTube iframe successfully masked.');
     });
 
     playerInstance.on('play', () => {
         startWatermarkAnimation();
     });
-
-    playerInstance.on('pause', () => {
-        // Paused
-    });
 }
 
 /**
- * 2. Dynamic Floating Watermark
- * Menampilkan Email & User ID yang berpindah posisi secara halus dan berkala
+ * 2. Dynamic Floating Monospace Watermark (Anti Screen Recording)
  */
 let watermarkTimer = null;
 
@@ -105,9 +100,9 @@ function startWatermarkAnimation() {
 
 function moveWatermarkRandomly(element) {
     const minTop = 15;
-    const maxTop = 75;
-    const minLeft = 10;
-    const maxLeft = 65;
+    const maxTop = 70;
+    const minLeft = 8;
+    const maxLeft = 60;
 
     const randomTop = Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop;
     const randomLeft = Math.floor(Math.random() * (maxLeft - minLeft + 1)) + minLeft;
@@ -127,12 +122,12 @@ function initSecurityInterceptors() {
         videoContainer.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            showSecurityToast('Klik kanan dinonaktifkan untuk melindungi hak cipta video.');
+            showSecurityToast('Fitur klik kanan dinonaktifkan untuk melindungi hak cipta video.');
             return false;
         });
     }
 
-    // Blokir Tombol Pintas Developer Tools
+    // Blokir Tombol Pintas Developer Tools & View Source
     window.addEventListener('keydown', (e) => {
         // F12
         if (e.key === 'F12' || e.keyCode === 123) {
@@ -165,7 +160,7 @@ function initSecurityInterceptors() {
 }
 
 /**
- * Notifikasi Keamanan Toast
+ * Flash Alert / Security Toast
  */
 let toastTimeout = null;
 function showSecurityToast(message) {
@@ -186,18 +181,18 @@ function showSecurityToast(message) {
 }
 
 /**
- * Tab Navigation
+ * Tab Navigation (GitHub UnderlineNav)
  */
 window.switchTab = function(event, tabId) {
-    event.preventDefault();
-    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    if (event) event.preventDefault();
+    document.querySelectorAll('.underline-nav-item, .tab-button').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
 
-    event.currentTarget.classList.add('active');
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
     const targetPane = document.getElementById(tabId);
     if (targetPane) {
         targetPane.classList.add('active');
     }
 };
-
-

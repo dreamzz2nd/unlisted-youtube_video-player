@@ -1,226 +1,292 @@
 <!DOCTYPE html>
-<html lang="id" class="dark">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>01. Pengenalan Arsitektur E-Learning & Proteksi Video - EduSecure LMS</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <title>01. Pengenalan Arsitektur E-Learning & Proteksi Video - EduSecure / Mastering-FullStack-2026</title>
     
     <!-- Plyr.js Video Player CSS -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     
-    <!-- Custom E-Learning Player CSS -->
+    <!-- Custom E-Learning Player CSS (GitHub Minimalist White Theme) -->
     <link rel="stylesheet" href="./css/elearning-player.css">
 
-    <!-- FontAwesome Icons -->
+    <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+<body>
 
-    <!-- Top Navigation Bar -->
+    <!-- 1. Top Navigation Header (GitHub Repo Header Style) -->
     <header class="app-header">
-        <div class="header-container">
-            <div class="logo-group">
-                <a href="#" class="brand-logo">
-                    <div class="brand-badge">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <div class="brand-text">
-                        <span class="brand-title">EduSecure LMS</span>
-                        <span class="brand-tag">Laravel Player Engine</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="header-center">
-                <div class="course-badge">
+        <div class="header-top">
+            <div class="header-left">
+                <a href="#" class="brand-logo" title="EduSecure LMS">
                     <i class="fa-solid fa-graduation-cap"></i>
-                    <span>Mastering Full-Stack Web Development 2026</span>
+                </a>
+                <div class="repo-breadcrumb">
+                    <a href="#" class="org-name">EduSecure</a>
+                    <span class="divider">/</span>
+                    <a href="#" class="repo-name">mastering-fullstack-2026</a>
+                    <span class="badge-visibility">Protected</span>
                 </div>
             </div>
 
-            <div class="header-actions">
-                <div class="user-profile-badge">
-                    <div class="user-avatar">
-                        <i class="fa-solid fa-user-graduate"></i>
-                    </div>
-                    <div class="user-meta">
-                        <span class="user-name">Baim Developer</span>
-                        <span class="user-status">ID: #84920</span>
+            <div class="header-center">
+                <div class="header-search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Type / to search lessons, resources..." readonly />
+                    <span class="search-shortcut">/</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <button class="btn-gh">
+                    <i class="fa-regular fa-eye"></i> Watch
+                    <span class="btn-counter">4.7k</span>
+                </button>
+                <button class="btn-gh">
+                    <i class="fa-regular fa-star"></i> Star
+                    <span class="btn-counter">1.2k</span>
+                </button>
+                <div class="user-profile-btn" title="Logged in as Baim Developer">
+                    <div class="user-avatar-circle">B</div>
+                    <div class="user-details">
+                        <span class="user-handle">baim-dev</span>
+                        <span class="user-id-tag">ID: #84920</span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- 2. Underline Navigation Tabs (GitHub Style) -->
+        <div class="underline-nav-wrapper">
+            <div class="underline-nav-container">
+                <button class="underline-nav-item active" onclick="switchTab(event, 'tab-overview')">
+                    <i class="fa-solid fa-code"></i> Code & Lesson
+                </button>
+                <button class="underline-nav-item" onclick="switchTab(event, 'tab-security')">
+                    <i class="fa-solid fa-shield-halved"></i> Protection Specs
+                </button>
+                <button class="underline-nav-item" onclick="switchTab(event, 'tab-resources')">
+                    <i class="fa-solid fa-paperclip"></i> Resources
+                    <span class="counter-badge">2</span>
+                </button>
+                <button class="underline-nav-item" onclick="switchTab(event, 'tab-discussion')">
+                    <i class="fa-regular fa-comments"></i> Discussions
+                    <span class="counter-badge">3</span>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- 3. Main Workspace Layout -->
     <main class="app-main">
-        <div class="classroom-layout">
+        <div class="repo-layout">
             
-            <!-- Left Column: Video Theater & Lesson Details -->
-            <div class="player-column">
+            <!-- Left Column: Video Box & Markdown README Viewer -->
+            <div class="main-column">
                 
-                <!-- Video Wrapper with Protection Layers -->
-                <div class="video-theater-card">
-                    <div class="video-security-container" id="videoSecurityContainer">
+                <!-- Video Box Component -->
+                <div class="Box">
+                    <div class="video-box-header">
+                        <div class="module-branch-pill">
+                            <i class="fa-solid fa-code-branch"></i>
+                            <span>module/01-intro-architecture</span>
+                        </div>
+                        <div class="security-status-indicator">
+                            <span class="security-dot"></span>
+                            <span>Stream Active (DRM / Masked)</span>
+                        </div>
+                    </div>
+
+                    <!-- Protected Video Container -->
+                    <div class="video-container-frame" id="videoSecurityContainer">
                         
-                        <!-- Plyr Embedded YouTube Player (Target Video: gN75MH5Ej4c) -->
+                        <!-- Plyr Video Embed -->
                         <div class="plyr__video-embed" id="player">
                             <iframe
                                 src="https://www.youtube.com/embed/gN75MH5Ej4c?origin=http://localhost&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;controls=0&amp;disablekb=1"
                                 allowfullscreen
                                 allow="autoplay; encrypted-media"
                                 tabindex="-1"
-                                title="Pengenalan Arsitektur E-Learning"
+                                title="01. Pengenalan Arsitektur E-Learning"
                             ></iframe>
                         </div>
 
-                        <!-- 1. Transparent Shield Overlay (Blocks Direct YouTube Header/Logo Clicks) -->
-                        <div class="player-shield-overlay" id="playerShield" title="Klik untuk Play/Pause">
+                        <!-- 1. Transparent Shield Overlay (Blocks YouTube Direct Header Clicks) -->
+                        <div class="player-shield-overlay" id="playerShield" title="Klik untuk Play / Pause">
                             <div class="shield-top-mask"></div>
-                            <div class="shield-watermark-mask"></div>
                         </div>
 
-                        <!-- 2. Dynamic Floating Anti-Recording Watermark -->
+                        <!-- 2. Dynamic Floating Watermark (Anti Screen Recording) -->
                         <div class="dynamic-watermark" id="dynamicWatermark">
                             <i class="fa-solid fa-shield"></i>
-                            <span>baim@elearning.test &bull; ID: #84920</span>
-                        </div>
-
-                        <!-- 3. Security Badge Status Indicator -->
-                        <div class="security-floating-pill">
-                            <span class="security-dot"></span>
-                            <span>Protected E-Learning Stream</span>
+                            <span>baim@elearning.test &bull; #84920</span>
                         </div>
                     </div>
 
-                    <!-- Video Header / Lesson Meta Bar -->
-                    <div class="lesson-meta-bar">
-                        <div class="lesson-title-area">
-                            <div class="lesson-breadcrumbs">
-                                <span class="text-indigo-400 font-semibold">Mastering Full-Stack Web Development</span>
-                                <span class="divider">/</span>
-                                <span class="text-slate-400">Modul 1</span>
+                    <!-- Video Meta & Navigation Bar -->
+                    <div class="video-meta-footer">
+                        <div class="lesson-headline">
+                            <h1>01. Pengenalan Arsitektur E-Learning & Proteksi Video</h1>
+                            <div class="lesson-subtitle">
+                                <span><i class="fa-regular fa-clock"></i> 0:58 menit</span>
+                                <span>&bull;</span>
+                                <span>Instruktur: Alex Pratama</span>
                             </div>
-                            <h1 class="lesson-main-title">01. Pengenalan Arsitektur E-Learning & Proteksi Video</h1>
                         </div>
-
-                        <!-- Navigation Action Buttons -->
-                        <div class="lesson-nav-actions">
-                            <button class="btn-nav btn-next" onclick="alert('Beralih ke modul berikutnya!')">
-                                <span>Materi Selanjutnya</span>
-                                <i class="fa-solid fa-arrow-right"></i>
+                        <div class="lesson-actions-group">
+                            <button class="btn-gh" disabled style="opacity: 0.5; cursor: not-allowed;">
+                                <i class="fa-solid fa-chevron-left"></i> Previous
+                            </button>
+                            <button class="btn-gh btn-gh-primary" onclick="alert('Beralih ke modul 02!')">
+                                Next Lesson <i class="fa-solid fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Course Content Tabs & Instructor Card -->
-                <div class="lesson-details-card">
-                    <div class="tabs-header">
-                        <button class="tab-button active" onclick="switchTab(event, 'tab-overview')">
-                            <i class="fa-solid fa-book-open"></i> Ringkasan Materi
-                        </button>
-                        <button class="tab-button" onclick="switchTab(event, 'tab-security')">
-                            <i class="fa-solid fa-shield-virus"></i> Info Proteksi Video
-                        </button>
-                        <button class="tab-button" onclick="switchTab(event, 'tab-resources')">
-                            <i class="fa-solid fa-paperclip"></i> Lampiran & File
-                        </button>
-                        <button class="tab-button" onclick="switchTab(event, 'tab-discussion')">
-                            <i class="fa-solid fa-comments"></i> Tanya Jawab (3)
-                        </button>
+                <!-- Markdown Content / README.md Box -->
+                <div class="Box">
+                    <div class="readme-header">
+                        <div class="readme-title">
+                            <i class="fa-solid fa-book-bookmark"></i>
+                            <span>Deskripsi</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--fg-muted);">
+                            <span>2.8 KB</span> &bull; <span>Markdown</span>
+                        </div>
                     </div>
 
-                    <div class="tabs-body">
-                        <!-- Tab: Overview -->
-                        <div id="tab-overview" class="tab-pane active">
-                            <div class="instructor-snippet">
-                                <div class="instructor-avatar">
-                                    <i class="fa-solid fa-chalkboard-user"></i>
-                                </div>
-                                <div class="instructor-info">
-                                    <h4>Alex Pratama (Senior Software Architect)</h4>
-                                    <p>Instruktur & Course Lead</p>
-                                </div>
+                    <!-- Tab: Overview (README) -->
+                    <div id="tab-overview" class="tab-pane active markdown-body">
+                        <div class="author-card-snippet">
+                            <div class="author-avatar">
+                                <i class="fa-solid fa-user-tie"></i>
                             </div>
-
-                            <div class="lesson-description">
-                                <h3>Tentang Modul Ini</h3>
-                                <p>Pada modul pertama ini, kita mempelajari bagaimana sistem e-learning mengamankan video menggunakan teknik custom masking player (Plyr.js) dan dynamic floating watermarking tanpa membebani storage dan bandwidth server utama.</p>
-                                <div class="key-points-box">
-                                    <h4><i class="fa-solid fa-lightbulb text-amber-400"></i> Poin Proteksi yang Sedang Aktif:</h4>
-                                    <ul>
-                                        <li><strong>Zero Direct YouTube Link:</strong> UI bawaan YouTube (judul, tombol bagikan, avatar) ditutupi oleh <code>Shield Overlay</code>.</li>
-                                        <li><strong>Custom Controls (Plyr):</strong> Pengaturan kecepatan, seekbar, volume, dan fullscreen dikelola oleh player kustom.</li>
-                                        <li><strong>Dynamic Watermark:</strong> Identitas user (<code>baim@elearning.test</code>) berpindah-pindah posisi setiap 10 detik.</li>
-                                        <li><strong>Anti-Inspect & Klik Kanan:</strong> Mencegah akses mudah ke URL embed lewat menu konteks.</li>
-                                    </ul>
-                                </div>
+                            <div class="author-info">
+                                <h4>Alex Pratama</h4>
+                                <p>Lead Architect & Creator of Mastering Full-Stack Series</p>
                             </div>
                         </div>
 
-                        <!-- Tab: Security Info -->
-                        <div id="tab-security" class="tab-pane">
-                            <div class="security-explanation-grid">
-                                <div class="security-card">
-                                    <div class="icon-wrap text-emerald-400"><i class="fa-solid fa-globe"></i></div>
-                                    <h4>1. YouTube Unlisted</h4>
-                                    <p>Video tidak muncul di pencarian publik YouTube, hanya dapat diakses melalui player ini.</p>
+                        <h2>Tentang Modul 01</h2>
+                        <p>Pada modul pertama ini, kita mempelajari bagaimana sistem e-learning kelas industri mengamankan aset video menggunakan teknik <strong>Custom Masking Player (Plyr.js)</strong> dan <strong>Dynamic User Watermarking</strong> tanpa membebani storage serta bandwidth server aplikasi.</p>
+
+                        <div class="markdown-alert markdown-alert-note">
+                            <div class="markdown-alert-title">
+                                <i class="fa-solid fa-circle-info"></i> Catatan Arsitektur
+                            </div>
+                            <p>Video disimpan dengan visibilitas <code>Unlisted</code>. Frontend membungkus video menggunakan Plyr dan transparent shield overlay sehingga siswa tidak pernah melihat atau mengklik link langsung ke youtube.com.</p>
+                        </div>
+
+                        <h3>Poin Pembelajaran Utama</h3>
+                        <ul>
+                            <li><strong>Zero Direct YouTube Link:</strong> Header dan logo YouTube disembunyikan menggunakan parameter <code>controls=0</code>, <code>modestbranding=1</code>, dan layer transparan.</li>
+                            <li><strong>Custom Player Interface:</strong> Kontrol volume, seekbar, playback speed, dan full-screen dikelola sepenuhnya oleh Plyr.js.</li>
+                            <li><strong>Dynamic Watermark:</strong> Identitas user (<code>baim@elearning.test</code>) berpindah posisi secara periodik di atas video untuk mencegah pembajakan via rekaman layar.</li>
+                            <li><strong>Anti-Inspect & Klik Kanan:</strong> Mencegah akses cepat ke URL embed melalui inspect element atau shortcut browser.</li>
+                        </ul>
+
+                        <div class="markdown-alert markdown-alert-tip">
+                            <div class="markdown-alert-title">
+                                <i class="fa-solid fa-lightbulb"></i> Best Practice Produksi
+                            </div>
+                            <p>Kombinasikan teknik embedding ini dengan enkripsi HLS / signed URL pada server video untuk proteksi tingkat lanjut di platform berskala besar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Security Info -->
+                    <div id="tab-security" class="tab-pane markdown-body">
+                        <h2>Spesifikasi Proteksi Video</h2>
+                        <p>Daftar lapisan keamanan yang diterapkan pada player modul ini:</p>
+
+                        <table class="markdown-table">
+                            <thead>
+                                <tr>
+                                    <th>Lapisan Keamanan</th>
+                                    <th>Mekanisme Kerja</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1. YouTube Unlisted Mode</strong></td>
+                                    <td>Video tidak terindeks publik di YouTube search / recommendation</td>
+                                    <td><span style="color: var(--success-fg); font-weight: 600;">✓ Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2. Plyr UI Masking</strong></td>
+                                    <td>UI default YouTube dihilangkan dan diganti dengan UI player yang bersih</td>
+                                    <td><span style="color: var(--success-fg); font-weight: 600;">✓ Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3. Transparent Click Shield</strong></td>
+                                    <td>Menghalangi klik user pada area judul, logo, atau tombol share YouTube</td>
+                                    <td><span style="color: var(--success-fg); font-weight: 600;">✓ Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4. Dynamic Watermark</strong></td>
+                                    <td>Watermark email user bergerak periodik untuk mencegah screen recording</td>
+                                    <td><span style="color: var(--success-fg); font-weight: 600;">✓ Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5. Anti-Context & Devtools Guard</strong></td>
+                                    <td>Mencegah klik kanan pada area video dan shortcut F12 / Ctrl+U / Ctrl+Shift+I</td>
+                                    <td><span style="color: var(--success-fg); font-weight: 600;">✓ Active</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tab: Resources -->
+                    <div id="tab-resources" class="tab-pane">
+                        <div class="resource-row">
+                            <div class="resource-left">
+                                <i class="fa-solid fa-file-zipper"></i>
+                                <div>
+                                    <div class="resource-title">laravel-elearning-starter.zip</div>
+                                    <div class="resource-meta">ZIP Archive &bull; 2.4 MB &bull; Source Code Modul 1</div>
                                 </div>
-                                <div class="security-card">
-                                    <div class="icon-wrap text-cyan-400"><i class="fa-solid fa-layer-group"></i></div>
-                                    <h4>2. Plyr UI Masking</h4>
-                                    <p>Seluruh antarmuka kontrol diganti menggunakan Plyr.js bernuansa gelap dan premium.</p>
+                            </div>
+                            <button class="btn-gh" onclick="alert('Mengunduh source code...')">
+                                <i class="fa-solid fa-download"></i> Download
+                            </button>
+                        </div>
+                        <div class="resource-row">
+                            <div class="resource-left">
+                                <i class="fa-solid fa-file-pdf"></i>
+                                <div>
+                                    <div class="resource-title">video-protection-cheatsheet.pdf</div>
+                                    <div class="resource-meta">PDF Document &bull; 850 KB &bull; Panduan Parameter YouTube</div>
                                 </div>
-                                <div class="security-card">
-                                    <div class="icon-wrap text-indigo-400"><i class="fa-solid fa-shield-halved"></i></div>
-                                    <h4>3. Transparent Click Shield</h4>
-                                    <p>Mencegah klik pada logo YouTube atau tombol "Watch on YouTube".</p>
+                            </div>
+                            <button class="btn-gh" onclick="alert('Mengunduh PDF...')">
+                                <i class="fa-solid fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Discussion -->
+                    <div id="tab-discussion" class="tab-pane" style="padding: 16px;">
+                        <div class="timeline-comment">
+                            <div class="timeline-comment-header">
+                                <div>
+                                    <span class="timeline-author">rizky-ramadhan</span> commented 2 hours ago
                                 </div>
-                                <div class="security-card">
-                                    <div class="icon-wrap text-amber-400"><i class="fa-solid fa-id-badge"></i></div>
-                                    <h4>4. Dynamic Watermark</h4>
-                                    <p>Identitas user ditempel di video untuk mencegah pembajakan via rekaman layar.</p>
-                                </div>
+                                <span class="timeline-badge">Student</span>
+                            </div>
+                            <div class="timeline-comment-body">
+                                Penjelasannya sangat rapi dan mudah dipahami. Tampilan barunya jauh lebih bersih dan profesional seperti GitHub!
                             </div>
                         </div>
 
-                        <!-- Tab: Resources -->
-                        <div id="tab-resources" class="tab-pane">
-                            <div class="resource-item">
-                                <div class="res-icon"><i class="fa-solid fa-file-code"></i></div>
-                                <div class="res-details">
-                                    <h5>Source Code Modul (Laravel Controller & Blade)</h5>
-                                    <span>ZIP File &bull; 2.4 MB</span>
-                                </div>
-                                <button class="btn-download" onclick="alert('File siap diunduh!')"><i class="fa-solid fa-download"></i> Unduh</button>
-                            </div>
-                        </div>
-
-                        <!-- Tab: Discussion -->
-                        <div id="tab-discussion" class="tab-pane">
-                            <div class="discussion-container">
-                                <div class="comment-box">
-                                    <input type="text" placeholder="Tulis pertanyaan seputar materi ini..." class="comment-input" />
-                                    <button class="btn-send-comment"><i class="fa-solid fa-paper-plane"></i> Kirim</button>
-                                </div>
-                                <div class="comment-list">
-                                    <div class="single-comment">
-                                        <div class="c-avatar"><i class="fa-solid fa-user"></i></div>
-                                        <div class="c-body">
-                                            <div class="c-header">
-                                                <span class="c-author">Rizky Ramadhan</span>
-                                                <span class="c-time">2 jam yang lalu</span>
-                                            </div>
-                                            <p>Penjelasannya sangat jelas! Shield overlay-nya bekerja sangat baik mencegah klik YouTube.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="discussion-input-box">
+                            <textarea class="discussion-textarea" placeholder="Tinggalkan komentar atau pertanyaan mengenai materi ini..."></textarea>
+                            <div class="discussion-actions">
+                                <button class="btn-gh btn-gh-primary" onclick="alert('Komentar berhasil dikirim!')">
+                                    Comment
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -228,91 +294,128 @@
 
             </div>
 
-            <!-- Right Column: Course Curriculum Sidebar -->
-            <aside class="curriculum-column">
-                <div class="curriculum-card">
-                    <div class="curriculum-header">
-                        <div class="cur-title-row">
-                            <h3>Daftar Materi Kursus</h3>
-                            <span class="badge-count">4 Modul</span>
+            <!-- Right Column: GitHub Sidebar (About & Curriculum File Tree) -->
+            <aside class="sidebar-column">
+                
+                <!-- About Section -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">About</h3>
+                    <p class="sidebar-desc">
+                        Kursus komprehensif full-stack development dengan arsitektur secure video streaming, Laravel controller parsing, dan Plyr masking.
+                    </p>
+                    
+                    <div class="tag-list">
+                        <a href="#" class="topic-tag">laravel-12</a>
+                        <a href="#" class="topic-tag">video-protection</a>
+                        <a href="#" class="topic-tag">plyr-js</a>
+                        <a href="#" class="topic-tag">fullstack</a>
+                        <a href="#" class="topic-tag">elearning</a>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Learning Progress</span>
+                            <span style="font-weight: 600; color: var(--fg-default);">35%</span>
                         </div>
-                        <div class="course-progress-box">
-                            <div class="progress-info">
-                                <span>Progress Belajar</span>
-                                <span class="font-bold text-indigo-400">35%</span>
-                            </div>
-                            <div class="progress-bar-bg">
-                                <div class="progress-bar-fill" style="width: 35%"></div>
-                            </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width: 35%;"></div>
                         </div>
                     </div>
 
-                    <!-- Lessons List -->
-                    <div class="curriculum-list">
-                        <a href="#" class="lesson-item active-lesson completed-lesson">
-                            <div class="lesson-status-icon">
-                                <i class="fa-solid fa-circle-play text-indigo-400"></i>
+                    <ul class="sidebar-meta-list">
+                        <li><i class="fa-regular fa-circle-play"></i> 4 Modul Pembelajaran</li>
+                        <li><i class="fa-regular fa-clock"></i> Total Durasi: 41m 43s</li>
+                        <!-- <li><i class="fa-solid fa-scale-balanced"></i> MIT License (Educational)</li> -->
+                        <li><i class="fa-regular fa-calendar"></i> Updated August 2026</li>
+                    </ul>
+                </div>
+
+                <!-- Curriculum File-Tree Section -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Course Modules</h3>
+                    <div class="curriculum-box">
+                        
+                        <a href="#" class="curriculum-item active">
+                            <div class="curriculum-icon playing">
+                                <i class="fa-solid fa-circle-play"></i>
                             </div>
-                            <div class="lesson-info">
-                                <h4 class="lesson-item-title">01. Pengenalan Arsitektur E-Learning & Proteksi Video</h4>
-                                <div class="lesson-item-meta">
-                                    <span><i class="fa-regular fa-clock"></i> 0:58</span>
-                                    <span class="now-playing-tag">Sedang Diputar</span>
+                            <div class="curriculum-text">
+                                <div class="curriculum-title">01. Pengenalan Arsitektur E-Learning & Proteksi Video</div>
+                                <div class="curriculum-meta">
+                                    <span>0:58</span>
+                                    <span class="curriculum-active-badge">Playing</span>
                                 </div>
                             </div>
                         </a>
 
-                        <a href="#" class="lesson-item">
-                            <div class="lesson-status-icon">
-                                <i class="fa-regular fa-circle-play text-slate-500"></i>
+                        <a href="#" class="curriculum-item">
+                            <div class="curriculum-icon pending">
+                                <i class="fa-regular fa-circle-play"></i>
                             </div>
-                            <div class="lesson-info">
-                                <h4 class="lesson-item-title">02. Setup Routing dan Controller di Laravel</h4>
-                                <div class="lesson-item-meta">
-                                    <span><i class="fa-regular fa-clock"></i> 12:40</span>
+                            <div class="curriculum-text">
+                                <div class="curriculum-title">02. Setup Routing dan Controller di Laravel 11/12</div>
+                                <div class="curriculum-meta">
+                                    <span>12:40</span>
                                 </div>
                             </div>
                         </a>
 
-                        <a href="#" class="lesson-item">
-                            <div class="lesson-status-icon">
-                                <i class="fa-regular fa-circle-play text-slate-500"></i>
+                        <a href="#" class="curriculum-item">
+                            <div class="curriculum-icon pending">
+                                <i class="fa-regular fa-circle-play"></i>
                             </div>
-                            <div class="lesson-info">
-                                <h4 class="lesson-item-title">03. Implementasi Custom Plyr Player & Shield Overlay</h4>
-                                <div class="lesson-item-meta">
-                                    <span><i class="fa-regular fa-clock"></i> 18:15</span>
+                            <div class="curriculum-text">
+                                <div class="curriculum-title">03. Implementasi Custom Plyr Player & Shield Overlay</div>
+                                <div class="curriculum-meta">
+                                    <span>18:15</span>
                                 </div>
                             </div>
                         </a>
 
-                        <a href="#" class="lesson-item">
-                            <div class="lesson-status-icon">
-                                <i class="fa-regular fa-circle-play text-slate-500"></i>
+                        <a href="#" class="curriculum-item">
+                            <div class="curriculum-icon pending">
+                                <i class="fa-regular fa-circle-play"></i>
                             </div>
-                            <div class="lesson-info">
-                                <h4 class="lesson-item-title">04. Anti-Screen Recording dengan Dynamic Watermark</h4>
-                                <div class="lesson-item-meta">
-                                    <span><i class="fa-regular fa-clock"></i> 09:50</span>
+                            <div class="curriculum-text">
+                                <div class="curriculum-title">04. Anti-Screen Recording dengan Dynamic Watermark</div>
+                                <div class="curriculum-meta">
+                                    <span>09:50</span>
                                 </div>
                             </div>
                         </a>
+
                     </div>
                 </div>
+
             </aside>
 
         </div>
     </main>
 
-    <!-- Right Click & Inspect Notice Modal/Toast -->
-    <div id="securityNotice" class="security-toast hidden">
-        <i class="fa-solid fa-triangle-exclamation text-amber-400"></i>
-        <span>Fitur klik kanan & download dinonaktifkan untuk melindungi hak cipta video kursus.</span>
+    <!-- 4. Footer Minimalis Ala GitHub -->
+    <footer class="app-footer">
+        <div class="footer-container">
+            <div>
+                &copy; 2026 EduSecure LMS &bull; Clean Minimalist Player Engine
+            </div>
+            <div class="footer-links">
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+                <a href="#">Security</a>
+                <a href="#">Docs</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Flash Alert / Toast Keamanan -->
+    <div id="securityNotice" class="flash-toast hidden">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Fitur klik kanan dinonaktifkan untuk melindungi hak cipta video kursus.</span>
     </div>
 
-    <!-- Plyr.js Script CDN -->
+    <!-- Scripts -->
     <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-    <!-- Custom E-Learning Player Script -->
     <script src="./js/elearning-player.js"></script>
 </body>
 </html>

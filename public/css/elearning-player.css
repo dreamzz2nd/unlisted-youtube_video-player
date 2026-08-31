@@ -1,27 +1,66 @@
 /* ==========================================================================
-   E-Learning Video Protection Player - CSS System
-   Aesthetic: Deep Midnight Obsidian, Glassmorphism, Neon Violet / Cyan Accents
+   EduSecure LMS - GitHub Minimalist White Theme (Primer Design System)
+   Pure White & Light Aesthetic, Crisp 1px Borders, Developer-Grade Typography
    ========================================================================== */
 
 :root {
-    --bg-base: #090d16;
-    --bg-surface: #0f172a;
-    --bg-surface-elevated: #1e293b;
-    --bg-glass: rgba(15, 23, 42, 0.75);
-    --border-glass: rgba(255, 255, 255, 0.08);
-    --border-highlight: rgba(99, 102, 241, 0.3);
+    /* Canvas & Backgrounds */
+    --canvas-default: #ffffff;
+    --canvas-subtle: #f6f8fa;
+    --canvas-inset: #f6f8fa;
+    --canvas-overlay: #ffffff;
     
-    --primary: #6366f1;
-    --primary-hover: #4f46e5;
-    --primary-glow: rgba(99, 102, 241, 0.25);
-    --accent-emerald: #10b981;
-    --accent-cyan: #06b6d4;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
+    /* Borders */
+    --border-default: #d0d7de;
+    --border-muted: #d8dee4;
+    --border-subtle: #eaeef2;
+    --border-radius: 6px;
+    --border-radius-lg: 8px;
+    --border-radius-pill: 9999px;
 
-    --plyr-color-main: #6366f1;
+    /* Foreground / Text */
+    --fg-default: #1f2328;
+    --fg-muted: #656d76;
+    --fg-subtle: #8c959f;
+    --fg-on-emphasis: #ffffff;
+
+    /* Brand / Accent (GitHub Blue) */
+    --accent-fg: #0969da;
+    --accent-emphasis: #0969da;
+    --accent-muted: #ddf4ff;
+    --accent-subtle: #f0f8ff;
+    --accent-hover: #085fc4;
+
+    /* Success / Action (GitHub Green) */
+    --success-fg: #1a7f37;
+    --success-emphasis: #1f883d;
+    --success-muted: #dafbe1;
+    --success-subtle: #e6ffed;
+    --success-hover: #1a7f37;
+
+    /* Attention / Warnings (GitHub Yellow) */
+    --attention-fg: #9a6700;
+    --attention-emphasis: #d4a72c;
+    --attention-muted: #fff8c5;
+    --attention-subtle: #fffbe6;
+
+    /* Buttons */
+    --btn-bg: #f6f8fa;
+    --btn-border: rgba(31, 35, 40, 0.15);
+    --btn-hover-bg: #f3f4f6;
+    --btn-hover-border: rgba(31, 35, 40, 0.2);
+    --btn-active-bg: #ebecf0;
+    --btn-shadow: 0 1px 0 rgba(31, 35, 40, 0.04);
+
+    /* Plyr Player Theme */
+    --plyr-color-main: #0969da;
     --plyr-video-background: #000000;
+    --plyr-control-radius: 4px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 0 rgba(31, 35, 40, 0.04);
+    --shadow-card: 0 1px 3px rgba(31, 35, 40, 0.08);
+    --shadow-overlay: 0 8px 24px rgba(140, 149, 159, 0.2);
 }
 
 * {
@@ -31,827 +70,1109 @@
 }
 
 body {
-    background-color: var(--bg-base);
-    color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--canvas-subtle);
+    color: var(--fg-default);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    line-height: 1.5;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    user-select: none; /* Mencegah seleksi teks ilegal pada area sensitif */
+    -webkit-font-smoothing: antialiased;
+}
+
+code, kbd, samp, pre {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 12px;
+}
+
+a {
+    color: var(--accent-fg);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /* ==========================================================================
-   Header Styles
+   Header & GitHub-style Repo Navbar
    ========================================================================== */
 .app-header {
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border-glass);
+    background-color: var(--canvas-subtle);
+    border-bottom: 1px solid var(--border-default);
     position: sticky;
     top: 0;
     z-index: 50;
 }
 
-.header-container {
-    max-width: 1600px;
+.header-top {
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 0.75rem 1.5rem;
+    padding: 12px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
 }
 
-.logo-group .brand-logo {
+.header-left {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-    color: inherit;
+    gap: 12px;
 }
 
-.brand-badge {
-    width: 38px;
-    height: 38px;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 1.1rem;
-    box-shadow: 0 0 16px var(--primary-glow);
-}
-
-.brand-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.brand-title {
-    font-size: 1.15rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    background: linear-gradient(to right, #ffffff, #cbd5e1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.brand-tag {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--accent-cyan);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.course-badge {
+.brand-logo {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(30, 41, 59, 0.6);
-    border: 1px solid var(--border-glass);
-    padding: 0.4rem 1rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-}
-
-.course-badge i {
-    color: var(--primary);
-}
-
-.user-profile-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: rgba(30, 41, 59, 0.5);
-    border: 1px solid var(--border-glass);
-    padding: 0.35rem 0.85rem 0.35rem 0.5rem;
-    border-radius: 9999px;
-}
-
-.user-avatar {
+    justify-content: center;
     width: 32px;
     height: 32px;
+    background-color: #1f2328;
+    color: #ffffff;
     border-radius: 50%;
-    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    font-size: 16px;
+    text-decoration: none;
+    transition: opacity 0.15s;
+}
+
+.brand-logo:hover {
+    opacity: 0.85;
+    text-decoration: none;
+}
+
+/* Repo Breadcrumb */
+.repo-breadcrumb {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.85rem;
+    gap: 6px;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--fg-muted);
 }
 
-.user-meta {
-    display: flex;
-    flex-direction: column;
+.repo-breadcrumb .org-name {
+    color: var(--accent-fg);
+    font-weight: 400;
 }
 
-.user-name {
-    font-size: 0.825rem;
+.repo-breadcrumb .divider {
+    color: var(--fg-subtle);
+    font-size: 16px;
+}
+
+.repo-breadcrumb .repo-name {
+    color: var(--accent-fg);
     font-weight: 600;
+}
+
+.badge-visibility {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 7px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    color: var(--fg-muted);
+    border: 1px solid var(--border-default);
+    border-radius: var(--border-radius-pill);
+    margin-left: 6px;
+    background-color: transparent;
+}
+
+.header-center {
+    flex: 1;
+    max-width: 340px;
+}
+
+.header-search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--canvas-default);
+    border: 1px solid var(--border-default);
+    border-radius: var(--border-radius);
+    padding: 4px 10px;
+    font-size: 12px;
+    color: var(--fg-muted);
+    gap: 8px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.header-search-bar input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 13px;
+    color: var(--fg-default);
+    width: 100%;
+}
+
+.search-shortcut {
+    border: 1px solid var(--border-default);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 11px;
+    color: var(--fg-muted);
+    background-color: var(--canvas-subtle);
+    font-weight: 600;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* GitHub Buttons */
+.btn-gh {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--fg-default);
+    background-color: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--btn-shadow);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.15s, border-color 0.15s;
+    user-select: none;
+}
+
+.btn-gh:hover {
+    background-color: var(--btn-hover-bg);
+    border-color: var(--btn-hover-border);
+    text-decoration: none;
+}
+
+.btn-gh i {
+    color: var(--fg-muted);
+    font-size: 12px;
+}
+
+.btn-counter {
+    display: inline-block;
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 18px;
+    color: var(--fg-default);
+    background-color: rgba(175, 184, 193, 0.2);
+    border-radius: var(--border-radius-pill);
+    margin-left: 2px;
+}
+
+/* Primary Green Button */
+.btn-gh-primary {
+    color: var(--btn-primary-text);
+    background-color: var(--btn-primary-bg);
+    border-color: var(--btn-primary-border);
+    box-shadow: 0 1px 0 rgba(31, 35, 40, 0.1);
+}
+
+.btn-gh-primary:hover {
+    background-color: var(--btn-primary-hover-bg);
+    border-color: rgba(31, 35, 40, 0.15);
+    color: var(--btn-primary-text);
+}
+
+.btn-gh-primary i {
     color: #ffffff;
 }
 
-.user-status {
-    font-size: 0.675rem;
-    color: var(--accent-emerald);
-    font-family: 'JetBrains Mono', monospace;
+.user-profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.user-profile-btn:hover {
+    background-color: rgba(208, 215, 222, 0.32);
+    text-decoration: none;
+}
+
+.user-avatar-circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #24292f;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.user-handle {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fg-default);
+    line-height: 1.2;
+}
+
+.user-id-tag {
+    font-size: 10px;
+    color: var(--fg-muted);
+    font-family: ui-monospace, monospace;
 }
 
 /* ==========================================================================
-   Main Classroom Layout
+   UnderlineNav (GitHub Tab Navigation)
+   ========================================================================== */
+.underline-nav-wrapper {
+    background-color: var(--canvas-subtle);
+    border-bottom: 1px solid var(--border-default);
+}
+
+.underline-nav-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.underline-nav-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--fg-default);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+    outline: none;
+}
+
+.underline-nav-item:hover {
+    color: var(--fg-default);
+    border-bottom-color: var(--border-default);
+}
+
+.underline-nav-item.active {
+    font-weight: 600;
+    color: var(--fg-default);
+    border-bottom-color: #fd8c73; /* GitHub classic active orange-red underline */
+}
+
+.underline-nav-item.active i {
+    color: var(--fg-default);
+}
+
+.underline-nav-item i {
+    color: var(--fg-muted);
+    font-size: 14px;
+}
+
+.counter-badge {
+    display: inline-block;
+    padding: 0 6px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    color: var(--fg-default);
+    background-color: rgba(175, 184, 193, 0.2);
+    border-radius: var(--border-radius-pill);
+}
+
+/* ==========================================================================
+   Main Layout Container
    ========================================================================== */
 .app-main {
     flex: 1;
-    max-width: 1600px;
+    max-width: 1440px;
     width: 100%;
     margin: 0 auto;
-    padding: 1.5rem;
+    padding: 24px;
 }
 
-.classroom-layout {
+.repo-layout {
     display: grid;
-    grid-template-columns: 1fr 380px;
-    gap: 1.5rem;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
     align-items: start;
 }
 
-@media (max-width: 1100px) {
-    .classroom-layout {
+@media (max-width: 1024px) {
+    .repo-layout {
         grid-template-columns: 1fr;
     }
 }
 
 /* ==========================================================================
-   Player Security Container & Masking Layers
+   GitHub Box Component System
    ========================================================================== */
-.video-theater-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-glass);
-    border-radius: 20px;
+.Box {
+    background-color: var(--canvas-default);
+    border: 1px solid var(--border-default);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
 }
 
-.video-security-container {
-    position: relative;
-    width: 100%;
-    background: #000000;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    border-radius: 20px 20px 0 0;
-}
-
-/* Plyr Customizations */
-.plyr {
-    width: 100%;
-    height: 100%;
-    --plyr-font-family: 'Plus Jakarta Sans', sans-serif;
-    --plyr-control-radius: 8px;
-}
-
-.plyr__video-embed iframe {
-    pointer-events: auto;
-}
-
-/* 1. Shield Overlay (Blocks Direct Header Clicks to YouTube) */
-.player-shield-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100% - 60px); /* Membiarkan bar kontrol Plyr di bawah tetap bisa diklik */
-    z-index: 10;
-    cursor: pointer;
-    background: transparent;
-}
-
-/* Top Mask khusus untuk memblokir area judul YouTube dan tombol share */
-.shield-top-mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    z-index: 12;
-    background: linear-gradient(180deg, rgba(9, 13, 22, 0.4) 0%, transparent 100%);
-    pointer-events: auto;
-}
-
-/* 2. Dynamic Floating Watermark (Anti Screen Recording) */
-.dynamic-watermark {
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    background: rgba(15, 23, 42, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(4px);
-    color: rgba(255, 255, 255, 0.4);
-    padding: 0.35rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-family: 'JetBrains Mono', monospace;
-    pointer-events: none;
-    z-index: 15;
+.Box-header {
+    background-color: var(--canvas-subtle);
+    border-bottom: 1px solid var(--border-default);
+    padding: 12px 16px;
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    justify-content: space-between;
+    gap: 12px;
 }
 
-/* 3. Security Floating Status Badge */
-.security-floating-pill {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    background: rgba(9, 13, 22, 0.85);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--border-glass);
-    padding: 0.3rem 0.7rem;
-    border-radius: 9999px;
-    font-size: 0.72rem;
+.Box-title {
+    font-size: 14px;
     font-weight: 600;
-    color: var(--accent-emerald);
+    color: var(--fg-default);
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    z-index: 14;
-    pointer-events: none;
+    gap: 8px;
+}
+
+.Box-title i {
+    color: var(--fg-muted);
+}
+
+.Box-body {
+    padding: 16px;
+}
+
+.Box-row {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.1s;
+}
+
+.Box-row:first-child {
+    border-top: none;
+}
+
+.Box-row:hover {
+    background-color: var(--canvas-subtle);
+}
+
+/* ==========================================================================
+   Video Player Box & Protection Layers
+   ========================================================================== */
+.video-box-header {
+    background-color: var(--canvas-subtle);
+    border-bottom: 1px solid var(--border-default);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.module-branch-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fg-default);
+    background-color: var(--canvas-default);
+    border: 1px solid var(--border-default);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.module-branch-pill i {
+    color: var(--fg-muted);
+}
+
+.security-status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--success-fg);
+    background-color: var(--success-subtle);
+    border: 1px solid rgba(31, 136, 61, 0.2);
+    padding: 2px 8px;
+    border-radius: var(--border-radius-pill);
 }
 
 .security-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: var(--accent-emerald);
-    box-shadow: 0 0 8px var(--accent-emerald);
-    animation: pulseGlow 2s infinite;
+    background-color: var(--success-emphasis);
 }
 
-@keyframes pulseGlow {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.85); }
-}
-
-/* ==========================================================================
-   Lesson Meta Bar & Navigation
-   ========================================================================== */
-.lesson-meta-bar {
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    border-bottom: 1px solid var(--border-glass);
-}
-
-.lesson-breadcrumbs {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.825rem;
-    margin-bottom: 0.35rem;
-}
-
-.lesson-breadcrumbs .divider {
-    color: var(--text-muted);
-}
-
-.lesson-main-title {
-    font-size: 1.35rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: #ffffff;
-    line-height: 1.3;
-}
-
-.lesson-nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex-shrink: 0;
-}
-
-.btn-nav {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.65rem 1.2rem;
-    border-radius: 12px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-
-.btn-prev {
-    background: var(--bg-surface-elevated);
-    color: var(--text-secondary);
-    border: 1px solid var(--border-glass);
-}
-
-.btn-prev:hover {
-    background: #334155;
-    color: #ffffff;
-}
-
-.btn-next {
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
-    color: #ffffff;
-    border: none;
-    box-shadow: 0 4px 14px var(--primary-glow);
-}
-
-.btn-next:hover {
-    background: linear-gradient(135deg, #4f46e5, #4338ca);
-    transform: translateY(-1px);
-}
-
-.btn-complete {
-    background: linear-gradient(135deg, #10b981, #059669);
-    color: #ffffff;
-    border: none;
-}
-
-/* ==========================================================================
-   Tabs Section
-   ========================================================================== */
-.lesson-details-card {
-    margin-top: 1.5rem;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-glass);
-    border-radius: 20px;
+.video-container-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000000;
     overflow: hidden;
 }
 
-.tabs-header {
-    display: flex;
-    border-bottom: 1px solid var(--border-glass);
-    background: rgba(15, 23, 42, 0.5);
-    padding: 0 1rem;
-    overflow-x: auto;
+/* Plyr Player Adjustments */
+.plyr {
+    width: 100%;
+    height: 100%;
+    --plyr-color-main: #0969da;
+    --plyr-font-family: inherit;
+    --plyr-control-radius: 4px;
 }
 
-.tab-button {
-    background: none;
-    border: none;
-    padding: 1rem 1.25rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    font-weight: 600;
-    font-family: inherit;
+.plyr__video-embed iframe {
+    pointer-events: auto;
+}
+
+/* 1. Transparent Shield Overlay */
+.player-shield-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 56px); /* Mengizinkan klik bar kontrol bawah Plyr */
+    z-index: 10;
     cursor: pointer;
+    background: transparent;
+}
+
+.shield-top-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 12;
+    background: transparent;
+    pointer-events: auto;
+}
+
+/* 2. Dynamic Monospace Watermark */
+.dynamic-watermark {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    background: rgba(31, 35, 40, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.75);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", monospace;
+    pointer-events: none;
+    z-index: 15;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.dynamic-watermark i {
+    font-size: 10px;
+    color: #4ac26b;
+}
+
+/* Video Control & Meta Footer Bar */
+.video-meta-footer {
+    padding: 12px 16px;
+    background-color: var(--canvas-default);
+    border-top: 1px solid var(--border-default);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    position: relative;
-    transition: color 0.2s ease;
-    white-space: nowrap;
+    justify-content: space-between;
+    gap: 16px;
 }
 
-.tab-button:hover {
+.lesson-headline {
+    flex: 1;
+}
+
+.lesson-headline h1 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--fg-default);
+    margin-bottom: 2px;
+}
+
+.lesson-subtitle {
+    font-size: 12px;
+    color: var(--fg-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lesson-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ==========================================================================
+   README.md Markdown Body (GitHub Authentic Style)
+   ========================================================================== */
+.readme-header {
+    background-color: var(--canvas-subtle);
+    border-bottom: 1px solid var(--border-default);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fg-default);
+}
+
+.readme-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.markdown-body {
+    padding: 24px 32px;
+    color: var(--fg-default);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.markdown-body h2 {
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-muted);
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+.markdown-body h2:first-child {
+    margin-top: 0;
+}
+
+.markdown-body h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.markdown-body p {
+    margin-bottom: 16px;
+    color: var(--fg-default);
+}
+
+.markdown-body ul {
+    padding-left: 2em;
+    margin-bottom: 16px;
+}
+
+.markdown-body li {
+    margin-top: 4px;
+}
+
+.markdown-body code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    white-space: break-spaces;
+    background-color: rgba(175, 184, 193, 0.2);
+    border-radius: 6px;
+}
+
+/* GitHub Alert Callouts */
+.markdown-alert {
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border-left: 4px solid;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    background-color: var(--canvas-subtle);
+}
+
+.markdown-alert-note {
+    border-left-color: var(--accent-fg);
+    background-color: var(--accent-subtle);
+}
+
+.markdown-alert-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.markdown-alert-note .markdown-alert-title {
+    color: var(--accent-fg);
+}
+
+.markdown-alert-tip {
+    border-left-color: var(--success-emphasis);
+    background-color: var(--success-subtle);
+}
+
+.markdown-alert-tip .markdown-alert-title {
+    color: var(--success-fg);
+}
+
+.markdown-alert p:last-child {
+    margin-bottom: 0;
+}
+
+/* Instructor Snippet in Readme */
+.author-card-snippet {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background-color: var(--canvas-subtle);
+    border: 1px solid var(--border-default);
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #1f2328;
     color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
 }
 
-.tab-button.active {
-    color: var(--primary);
+.author-info h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fg-default);
 }
 
-.tab-button.active::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--primary);
-    box-shadow: 0 0 10px var(--primary);
+.author-info p {
+    font-size: 12px;
+    color: var(--fg-muted);
+    margin: 0;
 }
 
-.tabs-body {
-    padding: 1.75rem;
+/* GitHub Tables */
+.markdown-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 13px;
 }
 
+.markdown-table th,
+.markdown-table td {
+    padding: 8px 12px;
+    border: 1px solid var(--border-default);
+    text-align: left;
+}
+
+.markdown-table th {
+    background-color: var(--canvas-subtle);
+    font-weight: 600;
+}
+
+.markdown-table tr:nth-child(even) {
+    background-color: var(--canvas-subtle);
+}
+
+/* Tab Panes */
 .tab-pane {
     display: none;
 }
 
 .tab-pane.active {
     display: block;
-    animation: fadeIn 0.25s ease-in-out;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Instructor Snippet */
-.instructor-snippet {
+/* ==========================================================================
+   Resources & Discussion Subviews
+   ========================================================================== */
+.resource-row {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--border-glass);
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border-subtle);
 }
 
-.instructor-avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: rgba(99, 102, 241, 0.15);
-    border: 1px solid var(--border-highlight);
+.resource-row:first-child {
+    border-top: none;
+}
+
+.resource-left {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: var(--primary);
-    font-size: 1.1rem;
+    gap: 12px;
 }
 
-.instructor-info h4 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #ffffff;
+.resource-left i {
+    font-size: 18px;
+    color: var(--fg-muted);
 }
 
-.instructor-info p {
-    font-size: 0.8rem;
-    color: var(--text-muted);
+.resource-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-fg);
 }
 
-.lesson-description h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
+.resource-meta {
+    font-size: 11px;
+    color: var(--fg-muted);
 }
 
-.lesson-description p {
-    color: var(--text-secondary);
-    line-height: 1.65;
-    font-size: 0.95rem;
+/* Discussion Comment Thread (GitHub Issues Style) */
+.timeline-comment {
+    border: 1px solid var(--border-default);
+    border-radius: var(--border-radius);
+    margin-bottom: 16px;
+    background-color: var(--canvas-default);
 }
 
-.key-points-box {
-    margin-top: 1.25rem;
-    background: rgba(30, 41, 59, 0.4);
-    border: 1px solid var(--border-glass);
-    border-radius: 12px;
-    padding: 1.25rem;
-}
-
-.key-points-box h4 {
-    font-size: 0.925rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
+.timeline-comment-header {
+    background-color: var(--canvas-subtle);
+    border-bottom: 1px solid var(--border-default);
+    padding: 8px 14px;
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--fg-muted);
 }
 
-.key-points-box ul {
+.timeline-author {
+    font-weight: 600;
+    color: var(--fg-default);
+}
+
+.timeline-badge {
+    border: 1px solid var(--border-default);
+    border-radius: var(--border-radius-pill);
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.timeline-comment-body {
+    padding: 14px;
+    font-size: 13px;
+}
+
+.discussion-input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    background-color: var(--canvas-subtle);
+    border: 1px solid var(--border-default);
+    border-radius: var(--border-radius);
+    padding: 12px;
+}
+
+.discussion-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--border-radius);
+    outline: none;
+    resize: vertical;
+    background-color: var(--canvas-default);
+}
+
+.discussion-textarea:focus {
+    border-color: var(--accent-fg);
+    box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.3);
+}
+
+.discussion-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ==========================================================================
+   Sidebar: GitHub "About" & Curriculum List
+   ========================================================================== */
+.sidebar-section {
+    margin-bottom: 24px;
+}
+
+.sidebar-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fg-default);
+    margin-bottom: 10px;
+}
+
+.sidebar-desc {
+    font-size: 13px;
+    color: var(--fg-default);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.topic-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    color: var(--accent-fg);
+    background-color: var(--accent-muted);
+    border-radius: var(--border-radius-pill);
+    text-decoration: none;
+}
+
+.topic-tag:hover {
+    background-color: #c8e9ff;
+    text-decoration: none;
+}
+
+/* Progress bar */
+.progress-container {
+    margin-bottom: 16px;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--fg-muted);
+    margin-bottom: 6px;
+}
+
+.progress-track {
+    height: 8px;
+    background-color: var(--border-muted);
+    border-radius: var(--border-radius-pill);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--success-emphasis);
+    border-radius: var(--border-radius-pill);
+    transition: width 0.3s ease;
+}
+
+/* Curriculum File-Tree Styled List */
+.curriculum-box {
+    border: 1px solid var(--border-default);
+    border-radius: var(--border-radius);
+    background-color: var(--canvas-default);
+    overflow: hidden;
+}
+
+.curriculum-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    border-top: 1px solid var(--border-subtle);
+    text-decoration: none;
+    color: var(--fg-default);
+    transition: background-color 0.12s;
+}
+
+.curriculum-item:first-child {
+    border-top: none;
+}
+
+.curriculum-item:hover {
+    background-color: var(--canvas-subtle);
+    text-decoration: none;
+}
+
+.curriculum-item.active {
+    background-color: var(--accent-subtle);
+    border-left: 3px solid var(--accent-fg);
+}
+
+.curriculum-icon {
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+.curriculum-icon.done {
+    color: var(--success-emphasis);
+}
+
+.curriculum-icon.playing {
+    color: var(--accent-fg);
+}
+
+.curriculum-icon.pending {
+    color: var(--fg-subtle);
+}
+
+.curriculum-text {
+    flex: 1;
+}
+
+.curriculum-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fg-default);
+    line-height: 1.35;
+}
+
+.curriculum-item.active .curriculum-title {
+    font-weight: 600;
+    color: var(--accent-fg);
+}
+
+.curriculum-meta {
+    font-size: 11px;
+    color: var(--fg-muted);
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.curriculum-active-badge {
+    background-color: var(--accent-muted);
+    color: var(--accent-fg);
+    padding: 0 4px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 10px;
+}
+
+/* Sidebar Meta Items (Stars, Forks, License) */
+.sidebar-meta-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--fg-muted);
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 12px;
+    margin-top: 12px;
 }
 
-.key-points-box li {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    position: relative;
-    padding-left: 1.25rem;
-}
-
-.key-points-box li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--primary);
-}
-
-.key-points-box code {
-    background: rgba(99, 102, 241, 0.15);
-    color: #a5b4fc;
-    padding: 0.15rem 0.4rem;
-    border-radius: 4px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.825rem;
-}
-
-/* Security Grid */
-.security-explanation-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
-}
-
-.security-card {
-    background: rgba(30, 41, 59, 0.5);
-    border: 1px solid var(--border-glass);
-    border-radius: 14px;
-    padding: 1.25rem;
-}
-
-.security-card .icon-wrap {
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-}
-
-.security-card h4 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-    color: #ffffff;
-}
-
-.security-card p {
-    font-size: 0.825rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-}
-
-/* Resources Tab */
-.resource-item {
+.sidebar-meta-list li {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    background: rgba(30, 41, 59, 0.4);
-    border: 1px solid var(--border-glass);
-    border-radius: 12px;
-    margin-bottom: 0.75rem;
+    gap: 8px;
 }
 
-.res-icon {
-    font-size: 1.5rem;
-    color: var(--primary);
-    margin-right: 1rem;
-}
-
-.res-details {
-    flex: 1;
-}
-
-.res-details h5 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #ffffff;
-}
-
-.res-details span {
-    font-size: 0.775rem;
-    color: var(--text-muted);
-}
-
-.btn-download {
-    background: var(--bg-surface-elevated);
-    border: 1px solid var(--border-glass);
-    color: var(--text-primary);
-    padding: 0.45rem 0.9rem;
-    border-radius: 8px;
-    font-size: 0.825rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-/* Discussion Tab */
-.comment-box {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-}
-
-.comment-input {
-    flex: 1;
-    background: rgba(30, 41, 59, 0.6);
-    border: 1px solid var(--border-glass);
-    padding: 0.65rem 1rem;
-    border-radius: 10px;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: 0.875rem;
-}
-
-.comment-input:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-
-.btn-send-comment {
-    background: var(--primary);
-    color: #ffffff;
-    border: none;
-    padding: 0 1.25rem;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.single-comment {
-    display: flex;
-    gap: 0.85rem;
-    padding: 1rem;
-    background: rgba(30, 41, 59, 0.3);
-    border-radius: 12px;
-}
-
-.c-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #334155;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-}
-
-.c-body {
-    flex: 1;
-}
-
-.c-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.3rem;
-}
-
-.c-author {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #ffffff;
-}
-
-.c-time {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-}
-
-.c-body p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
+.sidebar-meta-list i {
+    width: 16px;
+    color: var(--fg-subtle);
 }
 
 /* ==========================================================================
-   Curriculum Sidebar
+   GitHub Flash Alert / Security Toast
    ========================================================================== */
-.curriculum-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-glass);
-    border-radius: 20px;
-    overflow: hidden;
-    position: sticky;
-    top: 5rem;
-}
-
-.curriculum-header {
-    padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid var(--border-glass);
-    background: rgba(15, 23, 42, 0.6);
-}
-
-.cur-title-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-
-.cur-title-row h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-.badge-count {
-    background: rgba(99, 102, 241, 0.15);
-    color: #a5b4fc;
-    padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-
-.course-progress-box .progress-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.4rem;
-}
-
-.progress-bar-bg {
-    width: 100%;
-    height: 6px;
-    background: #334155;
-    border-radius: 9999px;
-    overflow: hidden;
-}
-
-.progress-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #6366f1, #06b6d4);
-    border-radius: 9999px;
-    transition: width 0.4s ease;
-}
-
-.curriculum-list {
-    display: flex;
-    flex-direction: column;
-    max-height: calc(100vh - 280px);
-    overflow-y: auto;
-}
-
-.lesson-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.85rem;
-    padding: 1rem 1.25rem;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    transition: background 0.2s ease;
-}
-
-.lesson-item:hover {
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.lesson-item.active-lesson {
-    background: rgba(99, 102, 241, 0.1);
-    border-left: 3px solid var(--primary);
-}
-
-.lesson-status-icon {
-    font-size: 1.15rem;
-    margin-top: 0.15rem;
-}
-
-.lesson-info {
-    flex: 1;
-}
-
-.lesson-item-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.35;
-    margin-bottom: 0.3rem;
-}
-
-.active-lesson .lesson-item-title {
-    color: #ffffff;
-    font-weight: 700;
-}
-
-.lesson-item-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-}
-
-.now-playing-tag {
-    background: var(--primary);
-    color: #ffffff;
-    padding: 0.1rem 0.45rem;
-    border-radius: 4px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-/* ==========================================================================
-   Security Toast / Anti-Inspect Notice
-   ========================================================================== */
-.security-toast {
+.flash-toast {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: rgba(15, 23, 42, 0.95);
-    border: 1px solid rgba(245, 158, 11, 0.4);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(12px);
-    padding: 0.85rem 1.25rem;
-    border-radius: 12px;
-    color: #ffffff;
-    font-size: 0.85rem;
+    bottom: 24px;
+    right: 24px;
+    background-color: var(--canvas-default);
+    border: 1px solid var(--border-default);
+    box-shadow: var(--shadow-overlay);
+    border-radius: var(--border-radius);
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--fg-default);
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 10px;
     z-index: 9999;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    max-width: 420px;
+    max-width: 440px;
+    border-left: 4px solid #9a6700;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
 }
 
-.security-toast.hidden {
+.flash-toast.hidden {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
     pointer-events: none;
+}
+
+.flash-toast i {
+    color: #9a6700;
+    font-size: 15px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.app-footer {
+    border-top: 1px solid var(--border-default);
+    background-color: var(--canvas-subtle);
+    margin-top: auto;
+    padding: 24px 0;
+    font-size: 12px;
+    color: var(--fg-muted);
+}
+
+.footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 16px;
+}
+
+.footer-links a {
+    color: var(--accent-fg);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
 }
