@@ -2,6 +2,7 @@
 
 Proyek ini mendemonstrasikan implementasi **Proteksi Video E-Learning** menggunakan teknik **YouTube Unlisted + Custom Plyr.js Masking + Shield Click Interceptor + Dynamic Watermark**.
 
+Contoh:
 Video Target: `https://youtube.com/shorts/gN75MH5Ej4c?feature=share` (ID: `gN75MH5Ej4c`).
 
 ---
